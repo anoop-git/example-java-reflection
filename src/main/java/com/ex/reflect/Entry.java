@@ -14,7 +14,7 @@ public class Entry {
     public static void main(String[] args) {
         log.info("Started...");
 
-        log.info("Waiting for enter key press to exit...");
+        log.info("Waiting for <enter> key-press to exit...");
         try (BufferedReader in = new BufferedReader(new InputStreamReader((System.in)))) {
             while (true) {
                 if (null!=in.readLine()) {

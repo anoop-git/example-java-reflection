@@ -12,6 +12,7 @@
 
         <dep.slf4j-simple.version>1.7.29</dep.slf4j-simple.version>
         <dep.junit.version>5.5.2</dep.junit.version>
+        <dep.reflections.version>0.9.11</dep.reflections.version>
     </properties>
 
     <dependencyManagement>
@@ -27,8 +28,15 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>${dep.slf4j-simple.version}</version>
-
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>${dep.reflections.version}</version>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <dependency>
