@@ -8,6 +8,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
 
+        <proj.main-class>com.ex.reflect.Entry</proj.main-class>
+
         <dep.slf4j-simple.version>1.7.29</dep.slf4j-simple.version>
         <dep.junit.version>5.5.2</dep.junit.version>
     </properties>
@@ -49,7 +51,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.ex.reflect.Entry</mainClass>
+                            <mainClass>${proj.main-class}</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -60,7 +62,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.ex.wss.Entry</mainClass>
+                            <mainClass>${proj.main-class}</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
