@@ -11,6 +11,7 @@
         <proj.main-class>com.ex.reflect.Entry</proj.main-class>
 
         <dep.slf4j-simple.version>1.7.29</dep.slf4j-simple.version>
+        <dep.commons-lang3.version>3.9</dep.commons-lang3.version>
         <dep.junit.version>5.5.2</dep.junit.version>
         <dep.reflections.version>0.9.11</dep.reflections.version>
     </properties>
@@ -29,6 +30,14 @@
             <artifactId>slf4j-simple</artifactId>
             <version>${dep.slf4j-simple.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${dep.commons-lang3.version}</version>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
         <dependency>

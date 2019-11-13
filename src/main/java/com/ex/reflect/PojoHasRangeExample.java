@@ -1,6 +1,8 @@
 package com.ex.reflect;
 
-public class PojoExample extends Validated {
+public class PojoHasRangeExample extends Validated {
+
+    public PojoHasRangeExample() { super(); }
 
     private int notValidated;
 
@@ -16,9 +18,7 @@ public class PojoExample extends Validated {
     @HasRange(min = -30, max = 30)
     private int value3;
 
-    public int getNotValidated() {
-        return this.notValidated;
-    }
+    public int getNotValidated() { return this.notValidated; }
 
     public int getValue0() {
         return this.value0;
@@ -36,9 +36,7 @@ public class PojoExample extends Validated {
         return this.value3;
     }
 
-    public void setNotValidated(int notValidated) {
-        this.notValidated = notValidated;
-    }
+    public void setNotValidated(int notValidated) { this.notValidated = notValidated; }
 
     public void setValue0(int val) {
         this.value0 = val;

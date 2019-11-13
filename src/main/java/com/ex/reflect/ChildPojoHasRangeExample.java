@@ -1,6 +1,8 @@
 package com.ex.reflect;
 
-final class ChildPojoExample extends PojoExample {
+final class ChildPojoHasRangeExample extends PojoHasRangeExample {
+
+    public ChildPojoHasRangeExample() { super(); }
 
     @HasRange(min = -40, max = 40)
     private int value4;

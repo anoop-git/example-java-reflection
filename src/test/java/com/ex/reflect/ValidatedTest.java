@@ -3,7 +3,8 @@ package com.ex.reflect;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.jvm.hotspot.utilities.Assert;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class ValidatedTest<O extends Validated> {
 
@@ -11,7 +12,7 @@ public abstract class ValidatedTest<O extends Validated> {
 
     @Test
     public void testIsValidByDefault() {
-        Assert.that(getObjectToValidate().isValid(),"Why is object not valid??");
+        assertTrue( getObjectToValidate().isValid(),"Why is object not valid??");
     }
 
     abstract O getObjectToValidate();

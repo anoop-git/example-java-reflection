@@ -1,9 +1,9 @@
 package com.ex.reflect;
 
 import org.junit.jupiter.api.Test;
-import sun.jvm.hotspot.utilities.Assert;
+import static org.junit.jupiter.api.Assertions.*;
 
-public abstract class AbstractPojoExampleTest<E extends PojoExample> extends ValidatedTest<E> {
+public abstract class AbstractPojoHasRangeExampleTest<E extends PojoHasRangeExample> extends ValidatedTest<E> {
 
     @Test
     public void testMinMaxValue0() {
@@ -30,14 +30,15 @@ public abstract class AbstractPojoExampleTest<E extends PojoExample> extends Val
 
         for (int i = min; i <= max; i++) {
             setTarget(ex, target, i);
-            Assert.that(ex.isValid(), "In range should be valid");
+            assertTrue(ex.isValid(), "In range should be valid");
+
         }
 
         setTarget(ex, target, min - 1);
-        Assert.that(!ex.isValid(), "Below valid range should fail");
+        assertTrue(!ex.isValid(), "Below valid range should fail");
 
         setTarget(ex, target, max + 1);
-        Assert.that(!ex.isValid(), "Above valid range should fail");
+        assertTrue(!ex.isValid(), "Above valid range should fail");
 
     }
 
