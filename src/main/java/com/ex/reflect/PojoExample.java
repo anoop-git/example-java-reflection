@@ -1,6 +1,6 @@
 package com.ex.reflect;
 
-final class PojoExample extends Validated {
+public class PojoExample extends Validated {
 
     @HasRange(min = 0, max = 1)
     private int value0;
