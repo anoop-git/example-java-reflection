@@ -27,7 +27,7 @@ public abstract class Validated {
     private boolean fieldIsValid(Field f) {
         boolean acc = f.isAccessible();
         f.setAccessible(true);
-        log.info("checking field: " + f);
+        log.trace("checking field: " + f);
         boolean isInvalid = false;
         HasRange ann = f.getAnnotation(HasRange.class);
         if (null != ann) {
