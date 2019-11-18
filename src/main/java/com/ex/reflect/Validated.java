@@ -9,9 +9,13 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.function.BiFunction;
 
-public abstract class Validated {
+public abstract class Validated<S extends Validated<S>> {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+    protected S me() {
+        return (S) this;
+    }
 
     // reflect over all items and ensure validation
     public boolean isValid() {
