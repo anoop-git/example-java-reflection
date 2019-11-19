@@ -13,8 +13,23 @@ public abstract class ValidatedTest<O extends Validated> {
     @Test
     public void testIsValidByDefault() {
         assertTrue( getObjectToValidate().isValid(),"Why is object not valid??");
+        assertNotNull(getObj(), "Was unable to get a newInstance - check logs for exception");
+        assertTrue( getObj().isValid(),"Why is the newInstance object not valid??");
     }
 
     abstract O getObjectToValidate();
+
+    abstract Class<O> getClazz();
+
+    O getObj() {
+        O obj = null;
+        try {
+            obj = getClazz().newInstance();
+        } catch(InstantiationException | IllegalAccessException e) {
+            log.error(e.getLocalizedMessage());
+            e.printStackTrace();
+        }
+        return obj;
+    }
 
 }

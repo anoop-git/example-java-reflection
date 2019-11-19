@@ -12,6 +12,11 @@ final class PojoMatchesExampleTest extends ValidatedTest<PojoMatchesExample> {
         return new PojoMatchesExample();
     }
 
+    @Override
+    Class<PojoMatchesExample> getClazz() {
+        return PojoMatchesExample.class;
+    }
+
     @Test
     public void testRegExPatternMatching() {
         assertFalse(StringUtils.EMPTY.matches("[0-9]{3}"), "Simple digit (non)matcher to empty string");

@@ -8,6 +8,11 @@ public class PojoHasRangeExampleTest extends AbstractPojoHasRangeExampleTest<Poj
     }
 
     @Override
+    Class<PojoHasRangeExample> getClazz() {
+        return PojoHasRangeExample.class;
+    }
+
+    @Override
     protected void childSetTarget(final PojoHasRangeExample ex, final int target, final int value) {
         // noop
     }

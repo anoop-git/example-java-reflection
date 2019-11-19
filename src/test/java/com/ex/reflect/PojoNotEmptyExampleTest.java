@@ -12,6 +12,11 @@ final class PojoNotEmptyExampleTest extends ValidatedTest<PojoNotEmptyExample> {
         return new PojoNotEmptyExample();
     }
 
+    @Override
+    Class<PojoNotEmptyExample> getClazz() {
+        return PojoNotEmptyExample.class;
+    }
+
     @Test
     public void testWillNotBeValidWhenEmpty() {
         PojoNotEmptyExample ex = getObjectToValidate();

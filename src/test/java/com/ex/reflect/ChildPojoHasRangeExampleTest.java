@@ -9,6 +9,11 @@ final class ChildPojoHasRangeExampleTest extends AbstractPojoHasRangeExampleTest
         return new ChildPojoHasRangeExample();
     }
 
+    @Override
+    Class<ChildPojoHasRangeExample> getClazz() {
+        return ChildPojoHasRangeExample.class;
+    }
+
     @Test
     public void testMinMaxValue4() {
         checkAllInRangePlusOneOutside(-40, 40, 4);
