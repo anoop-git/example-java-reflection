@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.aspect;
+package com.jbariel.ex.reflect;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -26,9 +26,6 @@ import java.lang.annotation.Target;
 
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface Around {
-
-	String basePackage() default "";
-
+@Target(ElementType.FIELD)
+@interface NotEmpty {
 }

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.reflect;
+package com.jbariel.ex.reflect;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;

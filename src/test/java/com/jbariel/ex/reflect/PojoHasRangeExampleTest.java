@@ -16,28 +16,25 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.reflect;
+package com.jbariel.ex.reflect;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.jbariel.ex.reflect.PojoHasRangeExample;
 
-public final class ReflectSingleton {
+public class PojoHasRangeExampleTest extends AbstractPojoHasRangeExampleTest<PojoHasRangeExample> {
 
-	private static final Logger log = LoggerFactory.getLogger(ReflectSingleton.class);
-
-	private final static ReflectSingleton instance = new ReflectSingleton();
-
-	public static ReflectSingleton instance() {
-		return instance;
+	@Override
+	PojoHasRangeExample getObjectToValidate() {
+		return new PojoHasRangeExample();
 	}
 
-	/**
-	 * Hide default constructor - should use the #instance() method
-	 */
-	private ReflectSingleton() {
-		super();
-		log.error("How did we get here?");
+	@Override
+	Class<PojoHasRangeExample> getClazz() {
+		return PojoHasRangeExample.class;
 	}
 
-	// TODO
+	@Override
+	protected void childSetTarget(final PojoHasRangeExample ex, final int target, final int value) {
+		// noop
+	}
+
 }

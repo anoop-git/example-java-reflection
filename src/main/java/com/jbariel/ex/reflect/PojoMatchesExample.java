@@ -16,35 +16,32 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.reflect;
+package com.jbariel.ex.reflect;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+final class PojoMatchesExample extends Validated<PojoMatchesExample> {
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+	public PojoMatchesExample() {
+		super();
+	}
 
-public class Entry {
+	private String noMatch;
 
-	private static final Logger log = LoggerFactory.getLogger(Entry.class);
+	@Matches("^[0-9]{3}$")
+	private String doMatch;
 
-	public static void main(String[] args) {
-		log.info("Started...");
+	public String getNoMatch() {
+		return this.noMatch;
+	}
 
-		log.info("Waiting for <enter> key-press to exit...");
-		try (BufferedReader in = new BufferedReader(new InputStreamReader((System.in)))) {
-			while (true) {
-				if (null != in.readLine()) {
-					// any teardown?
-					break;
-				}
-			}
-		} catch (IOException ex) {
-			log.error(ex.getLocalizedMessage());
-			ex.printStackTrace();
-		}
+	public String getDoMatch() {
+		return this.doMatch;
+	}
 
-		System.exit(0);
+	public void setNoMatch(String noMatch) {
+		this.noMatch = noMatch;
+	}
+
+	public void setDoMatch(String doMatch) {
+		this.doMatch = doMatch;
 	}
 }

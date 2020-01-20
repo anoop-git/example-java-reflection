@@ -16,13 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.reflect;
+package com.jbariel.ex.reflect;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
+
+import com.jbariel.ex.reflect.PojoNotEmptyExample;
 
 final class PojoNotEmptyExampleTest extends ValidatedTest<PojoNotEmptyExample> {
 

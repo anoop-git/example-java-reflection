@@ -16,11 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.reflect;
+package com.jbariel.ex.reflect;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+
+import com.jbariel.ex.reflect.AbstractPojoHasRangeExample;
 
 public abstract class AbstractPojoHasRangeExampleTest<E extends AbstractPojoHasRangeExample<E>>
 		extends ValidatedTest<E> {

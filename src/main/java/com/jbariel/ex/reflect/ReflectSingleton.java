@@ -16,32 +16,28 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.reflect;
+package com.jbariel.ex.reflect;
 
-final class PojoMatchesExample extends Validated<PojoMatchesExample> {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-	public PojoMatchesExample() {
+public final class ReflectSingleton {
+
+	private static final Logger log = LoggerFactory.getLogger(ReflectSingleton.class);
+
+	private final static ReflectSingleton instance = new ReflectSingleton();
+
+	public static ReflectSingleton instance() {
+		return instance;
+	}
+
+	/**
+	 * Hide default constructor - should use the #instance() method
+	 */
+	private ReflectSingleton() {
 		super();
+		log.error("How did we get here?");
 	}
 
-	private String noMatch;
-
-	@Matches("^[0-9]{3}$")
-	private String doMatch;
-
-	public String getNoMatch() {
-		return this.noMatch;
-	}
-
-	public String getDoMatch() {
-		return this.doMatch;
-	}
-
-	public void setNoMatch(String noMatch) {
-		this.noMatch = noMatch;
-	}
-
-	public void setDoMatch(String doMatch) {
-		this.doMatch = doMatch;
-	}
+	// TODO
 }

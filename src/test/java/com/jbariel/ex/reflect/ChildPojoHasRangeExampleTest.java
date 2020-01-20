@@ -16,12 +16,33 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.reflect;
+package com.jbariel.ex.reflect;
 
-public class PojoHasRangeExample extends AbstractPojoHasRangeExample<PojoHasRangeExample> {
+import org.junit.jupiter.api.Test;
 
-	public PojoHasRangeExample() {
-		super();
+import com.jbariel.ex.reflect.ChildPojoHasRangeExample;
+
+final class ChildPojoHasRangeExampleTest extends AbstractPojoHasRangeExampleTest<ChildPojoHasRangeExample> {
+
+	@Override
+	ChildPojoHasRangeExample getObjectToValidate() {
+		return new ChildPojoHasRangeExample();
 	}
 
+	@Override
+	Class<ChildPojoHasRangeExample> getClazz() {
+		return ChildPojoHasRangeExample.class;
+	}
+
+	@Test
+	public void testMinMaxValue4() {
+		checkAllInRangePlusOneOutside(-40, 40, 4);
+	}
+
+	@Override
+	protected void childSetTarget(final ChildPojoHasRangeExample ex, final int target, final int value) {
+		if (4 == target) {
+			ex.setValue4(value);
+		}
+	}
 }

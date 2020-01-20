@@ -16,31 +16,32 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.reflect;
+package com.jbariel.ex.reflect;
 
-import org.junit.jupiter.api.Test;
+final class PojoNotEmptyExample extends Validated<PojoNotEmptyExample> {
 
-final class ChildPojoHasRangeExampleTest extends AbstractPojoHasRangeExampleTest<ChildPojoHasRangeExample> {
-
-	@Override
-	ChildPojoHasRangeExample getObjectToValidate() {
-		return new ChildPojoHasRangeExample();
+	public PojoNotEmptyExample() {
+		super();
 	}
 
-	@Override
-	Class<ChildPojoHasRangeExample> getClazz() {
-		return ChildPojoHasRangeExample.class;
+	private String noValidation;
+
+	@NotEmpty
+	private String validation;
+
+	public String getNoValidation() {
+		return this.noValidation;
 	}
 
-	@Test
-	public void testMinMaxValue4() {
-		checkAllInRangePlusOneOutside(-40, 40, 4);
+	public String getValidation() {
+		return this.validation;
 	}
 
-	@Override
-	protected void childSetTarget(final ChildPojoHasRangeExample ex, final int target, final int value) {
-		if (4 == target) {
-			ex.setValue4(value);
-		}
+	public void setNoValidation(String noValidation) {
+		this.noValidation = noValidation;
+	}
+
+	public void setValidation(String validation) {
+		this.validation = validation;
 	}
 }

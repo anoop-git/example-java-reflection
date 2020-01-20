@@ -16,32 +16,35 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.reflect;
+package com.jbariel.ex.reflect;
 
-final class PojoNotEmptyExample extends Validated<PojoNotEmptyExample> {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-	public PojoNotEmptyExample() {
-		super();
-	}
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-	private String noValidation;
+public class Entry {
 
-	@NotEmpty
-	private String validation;
+	private static final Logger log = LoggerFactory.getLogger(Entry.class);
 
-	public String getNoValidation() {
-		return this.noValidation;
-	}
+	public static void main(String[] args) {
+		log.info("Started...");
 
-	public String getValidation() {
-		return this.validation;
-	}
+		log.info("Waiting for <enter> key-press to exit...");
+		try (BufferedReader in = new BufferedReader(new InputStreamReader((System.in)))) {
+			while (true) {
+				if (null != in.readLine()) {
+					// any teardown?
+					break;
+				}
+			}
+		} catch (IOException ex) {
+			log.error(ex.getLocalizedMessage());
+			ex.printStackTrace();
+		}
 
-	public void setNoValidation(String noValidation) {
-		this.noValidation = noValidation;
-	}
-
-	public void setValidation(String validation) {
-		this.validation = validation;
+		System.exit(0);
 	}
 }

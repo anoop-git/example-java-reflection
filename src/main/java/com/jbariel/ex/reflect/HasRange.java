@@ -16,25 +16,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.aspect.sample;
+package com.jbariel.ex.reflect;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class DemoAround {
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+@interface HasRange {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	int min() default -1_000_000_000;
 
-	public DemoAround() {
-		super();
-	}
-
-	public void myMethod() {
-		log.info("DemoAround#myMethod() inside");
-	}
-
-	public String ackValue(String foo) {
-		return foo;
-	}
+	int max() default 1_000_000_000;
 
 }

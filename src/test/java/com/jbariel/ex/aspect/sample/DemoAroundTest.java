@@ -16,12 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.aspect.sample;
+package com.jbariel.ex.aspect.sample;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+@Disabled
 public class DemoAroundTest {
 
 	DemoAround da = new DemoAround();

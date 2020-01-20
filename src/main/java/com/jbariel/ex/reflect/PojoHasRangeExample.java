@@ -16,23 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.ex.reflect;
+package com.jbariel.ex.reflect;
 
-public class PojoHasRangeExampleTest extends AbstractPojoHasRangeExampleTest<PojoHasRangeExample> {
+public class PojoHasRangeExample extends AbstractPojoHasRangeExample<PojoHasRangeExample> {
 
-	@Override
-	PojoHasRangeExample getObjectToValidate() {
-		return new PojoHasRangeExample();
-	}
-
-	@Override
-	Class<PojoHasRangeExample> getClazz() {
-		return PojoHasRangeExample.class;
-	}
-
-	@Override
-	protected void childSetTarget(final PojoHasRangeExample ex, final int target, final int value) {
-		// noop
+	public PojoHasRangeExample() {
+		super();
 	}
 
 }
