@@ -181,11 +181,6 @@ public class ValidateAnnotationsExistTest {
 	 */
 
 	@Test
-	public void placeholder() {
-		assertTrue("Just checking", true);
-	}
-
-	@Test
 	public void confirmPassWhenAllControllerPublicMethodsHaveAnnotation() {
 		final List<ErrMsg> errors = validateWithReflectorAndAnnotation(baseControllerPackage, PubReqAnn.class);
 		assertTrue("All controllers should be correct!", errors.isEmpty());
