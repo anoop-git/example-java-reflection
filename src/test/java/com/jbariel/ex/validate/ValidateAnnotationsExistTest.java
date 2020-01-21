@@ -61,6 +61,10 @@ public class ValidateAnnotationsExistTest {
 
 	private static final List<Class<? extends Object>> basePkgClasses = new ArrayList<>();
 
+	/**
+	 * Before we run the class, setup the {@link #basePkgClasses} using classpath
+	 * reflection.
+	 */
 	@BeforeAll
 	public static void setupPackageClassSets() {
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
@@ -85,6 +89,12 @@ public class ValidateAnnotationsExistTest {
 
 	}
 
+	/**
+	 * Recursive check for all nested dirs/files.
+	 * 
+	 * @param dir base dir to check
+	 * @return list of classes found
+	 */
 	private static List<Class<? extends Object>> getAllClasses(final File dir) {
 		Class<?> tmpClazz = null;
 		List<Class<? extends Object>> tmpClasses = new ArrayList<>();
@@ -104,6 +114,14 @@ public class ValidateAnnotationsExistTest {
 		return tmpClasses;
 	}
 
+	/**
+	 * Given a file, will return the class.
+	 * 
+	 * @param filePath string representation of the filepath
+	 * @return Class object, null if there is not a class or it is excluded
+	 * 
+	 * @see #excludeClassForReflection(Class)
+	 */
 	private static Class<? extends Object> getClassFromFilePath(String filePath) {
 		Class<? extends Object> clazz = null;
 		if (StringUtils.trimToEmpty(filePath).endsWith(classExtension)) {
@@ -117,13 +135,30 @@ public class ValidateAnnotationsExistTest {
 				e.printStackTrace();
 			}
 			assertNotNull("Should have seen a CNF exception!", clazz);
-			if (clazz.isAnnotation()) {
+			if (excludeClassForReflection(clazz)) {
 				clazz = null;
 			}
 		}
 		return clazz;
 	}
 
+	/**
+	 * Allows for exclusion of specific class types or other logic. Currently only
+	 * excludes annotations.
+	 * 
+	 * @param clazz to check
+	 * @return true if the class should be excluded, false otherwise.
+	 */
+	private static boolean excludeClassForReflection(Class<?> clazz) {
+		return clazz.isAnnotation();
+	}
+
+	/**
+	 * Holder class for the error messages generated during reflective tests.
+	 * 
+	 * @author jarrettbariel
+	 *
+	 */
 	class ErrMsg {
 		String clazzName;
 		String methodName;
@@ -141,24 +176,21 @@ public class ValidateAnnotationsExistTest {
 		}
 	}
 
-//	private Reflections reflectorForPackage(String basePkg) {
-//		return new Reflections(basePkg, new TypeAnnotationsScanner(), new SubTypesScanner(true),
-//				new MethodAnnotationsScanner());
-//	}
+	/*
+	 * ALL THE TESTS BELOW
+	 */
 
 	@Test
 	public void placeholder() {
 		assertTrue("Just checking", true);
 	}
 
-//	@Disabled
 	@Test
 	public void confirmPassWhenAllControllerPublicMethodsHaveAnnotation() {
 		final List<ErrMsg> errors = validateWithReflectorAndAnnotation(baseControllerPackage, PubReqAnn.class);
 		assertTrue("All controllers should be correct!", errors.isEmpty());
 	}
 
-//	@Disabled
 	@Test
 	public void confirmFailWhenAServicePublicMethodDoesNotHaveAnnotation() {
 		final List<ErrMsg> errors = validateWithReflectorAndAnnotation(baseServicePackage, PubReqAnn.class);
@@ -167,7 +199,6 @@ public class ValidateAnnotationsExistTest {
 		log.error(errors.get(0).toString());
 	}
 
-//	@Disabled
 	@Test
 	public void confirmFailWhenAServicePublicMethodDoesNotHaveAnnotationButControllersDo() {
 		final List<ErrMsg> errors = validateWithReflectorAndAnnotation(baseValidatePackage, PubReqAnn.class);
@@ -177,15 +208,7 @@ public class ValidateAnnotationsExistTest {
 	}
 
 	private <E extends Annotation> List<ErrMsg> validateWithReflectorAndAnnotation(String rfltPkg, Class<E> annClazz) {
-//		return validateWithReflectorAndAnnotation(reflectorForPackage(rfltPkg), annClazz);
-//	}
-//
-//	private <E extends Annotation> List<ErrMsg> validateWithReflectorAndAnnotation(Reflections rflt,
-//			Class<E> annClazz) {
 		final List<ErrMsg> errors = new ArrayList<>();
-
-//		rflt.getSubTypesOf(Object.class).stream().forEach(c -> {
-//		new Reflections(rfltPkg, new SubTypesScanner(true)).getSubTypesOf(Object.class).stream().forEach(c -> {
 		basePkgClasses.stream().filter(clazz -> clazz.getName().contains(rfltPkg)).forEach(pkgClazz -> {
 			log.info("Checking class: '" + pkgClazz.getSimpleName() + "'...");
 			Arrays.asList(pkgClazz.getDeclaredMethods()).stream().filter(m -> Modifier.isPublic(m.getModifiers()))

@@ -34,4 +34,11 @@ public class ExControllerA {
 	public void foobar() {
 	}
 
+	protected void foo2() {
+	}
+
+	@SuppressWarnings("unused")
+	private void foo3() {
+	}
+
 }

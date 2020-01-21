@@ -37,4 +37,11 @@ public class ExServiceB {
 	public void failMe() {
 	}
 
+	protected void foo2() {
+	}
+
+	@SuppressWarnings("unused")
+	private void foo3() {
+	}
+
 }
